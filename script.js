@@ -1,6 +1,18 @@
+function gerarGrid(linhas, colunas) {
+    var grid = [];
+    for (var i = 0; i < linhas; i++) {
+        grid.push([]);
+        for (var j = 0; j < colunas; j++) {
+            grid[i].push(Math.floor(Math.random() * 10)); // Preenche com valores aleatórios de 0 a 5
+        }
+    }
+    return grid;
+}
+
 function gerarTabuleiro(qtdeCartas){
     document.write("<table>");
     if (qtdeCartas == 12) {
+        var gridFacil = gerarGrid(3, 4);
         for (i = 0; i < 3; i ++){
             document.write("<tr>");
             for (j = 0; j < 4; j ++){
@@ -10,6 +22,7 @@ function gerarTabuleiro(qtdeCartas){
         }
     }
     if (qtdeCartas == 16) {
+        var gridMedia = gerarGrid(4, 4);
         for (i = 0; i < 4; i ++){
             document.write("<tr>");
             for (j = 0; j < 4; j ++){
@@ -19,6 +32,7 @@ function gerarTabuleiro(qtdeCartas){
         }
     }
     if (qtdeCartas == 20) {
+        var gridDificil = gerarGrid(4, 5);
         for (i = 0; i < 4; i ++){
             document.write("<tr>");
             for (j = 0; j < 5; j ++){
