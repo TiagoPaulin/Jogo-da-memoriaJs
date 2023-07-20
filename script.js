@@ -1,9 +1,9 @@
 function gerarTabuleiro(qtdeCartas){
     document.write("<table>");
-    if (qtdeCartas == 9) {
+    if (qtdeCartas == 12) {
         for (i = 0; i < 3; i ++){
             document.write("<tr>");
-            for (j = 0; j < 3; j ++){
+            for (j = 0; j < 4; j ++){
                 document.write("<td>Oi</td>");
             }
             document.write("</tr>");
@@ -13,13 +13,13 @@ function gerarTabuleiro(qtdeCartas){
         for (i = 0; i < 4; i ++){
             document.write("<tr>");
             for (j = 0; j < 4; j ++){
-                document.write("<td>Oi</td>");
+                document.write("<td><img src='images/backcard1.jpg' style='width:75px; height:100px;'></td>");
             }
             document.write("</tr>");
         }
     }
-    if (qtdeCartas == 25) {
-        for (i = 0; i < 5; i ++){
+    if (qtdeCartas == 20) {
+        for (i = 0; i < 4; i ++){
             document.write("<tr>");
             for (j = 0; j < 5; j ++){
                 document.write("<td>Oi</td>");
@@ -40,6 +40,10 @@ function iniciarJogo(){
         menu.setAttribute("class", "invisible");
         var nivel = document.getElementById("nivel");
         qtdeCartas = nivel.value;
-        gerarTabuleiro(qtdeCartas);
+        if (qtdeCartas == ""){
+            alert("Voce deve selecionar uma dificuldade")
+        } else {
+            gerarTabuleiro(qtdeCartas);
+        }
     }
 }
