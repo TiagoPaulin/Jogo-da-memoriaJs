@@ -38,6 +38,8 @@ function iniciarJogo(){
     } else {
         var menu = document.getElementById("menu");
         menu.setAttribute("class", "invisible");
-        gerarTabuleiro(9);
+        var nivel = document.getElementById("nivel");
+        qtdeCartas = nivel.value;
+        gerarTabuleiro(qtdeCartas);
     }
 }
