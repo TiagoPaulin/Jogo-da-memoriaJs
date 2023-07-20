@@ -1,2 +1,2 @@
 # Jogo-da-memoriaJs
-Jogo da memoria feito em javascript
+Jogo da memoria feito em javascript (em desenvolvimento)
