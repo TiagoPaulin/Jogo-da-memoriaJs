@@ -1,44 +1,27 @@
-var grid;
-
-function shuffleGrid(grid) {
-    var linhas = grid.length;
-    var colunas = grid[0].length;
-
-    for (var i = 0; i < 1000; i++) {
-        var i1 = Math.floor(Math.random() * linhas);
-        var j1 = Math.floor(Math.random() * colunas);
-        var i2 = Math.floor(Math.random() * linhas);
-        var j2 = Math.floor(Math.random() * colunas);
-
-        var aux = grid[i1][j1];
-        grid[i1][j1] = grid[i2][j2];
-        grid[i2][j2] = aux;
-    }
-}
+var grid; // criacao da variavel global da grid'
 
 function gerarGrid(linhas, colunas) {
-    if (linhas == 3 || colunas == 4){
-        grid = [
-            [1,1,2,2],
-            [3,3,4,4],
-            [5,5,6,6]
-        ];
-    } else if (linhas == 4 || colunas == 4){
-        grid = [
-            [1,1,2,2],
-            [3,3,4,4],
-            [5,5,6,6],
-            [7,7,8,8]
-        ];
-    } else {
-        grid = [
-            [1,1,2,2,3],
-            [3,4,4,5,5],
-            [6,6,7,7,8],
-            [8,9,9,0,0]
-        ];
+    var valores = []; // cria o array com os valores que vao corresponder a linha da matriz
+    for (var i = 0; i <= 9; i++) {
+        for (var j = 0; j < 2; j++) {
+            valores.push(i); // popula o array com valores de 0 a 9 que se repetem 2 vezes
+        }
     }
-    shuffleGrid(grid);
+    for (var i = valores.length - 1; i > 0; i--) { // percorre o array de tras pra frente
+        var j = Math.floor(Math.random() * (i + 1));
+        var aux = valores[i]; // troca os valores da posicao i com os da posicao j usando uma variavel auxiliar para embaralhar os valores
+        valores[i] = valores[j];
+        valores[j] = aux;
+    }
+    grid = []; // grid
+    var count = 0;
+    for (var i = 0; i < linhas; i++) {
+        grid[i] = [];
+        for (var j = 0; j < colunas; j++) {
+            grid[i][j] = valores[count]; // adiciona os valores embaralhados acima na grid
+            count++;
+        }
+    }
     return grid;
 }
 
