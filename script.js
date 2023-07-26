@@ -1,11 +1,42 @@
-function gerarGrid(linhas, colunas) {
-    var grid = [];
-    for (var i = 0; i < linhas; i++) {
-        grid.push([]);
-        for (var j = 0; j < colunas; j++) {
-            grid[i].push(Math.floor(Math.random() * 10)); // Preenche com valores aleatórios de 0 a 5
-        }
+function shuffleGrid(grid) {
+    var linhas = grid.length;
+    var colunas = grid[0].length;
+
+    for (var i = 0; i < 1000; i++) {
+        var i1 = Math.floor(Math.random() * linhas);
+        var j1 = Math.floor(Math.random() * colunas);
+        var i2 = Math.floor(Math.random() * linhas);
+        var j2 = Math.floor(Math.random() * colunas);
+
+        var aux = grid[i1][j1];
+        grid[i1][j1] = grid[i2][j2];
+        grid[i2][j2] = aux;
     }
+}
+
+function gerarGrid(linhas, colunas) {
+    if (linhas == 3 || colunas == 4){
+        var grid = [
+            [1,1,2,2],
+            [3,3,4,4],
+            [5,5,6,6]
+        ];
+    } else if (linhas == 4 || colunas == 4){
+        var grid = [
+            [1,1,2,2],
+            [3,3,4,4],
+            [5,5,6,6],
+            [7,7,8,8]
+        ];
+    } else {
+        var grid = [
+            [1,1,2,2,3],
+            [3,4,4,5,5],
+            [6,6,7,7,8],
+            [8,9,9,0,0]
+        ];
+    }
+    shuffleGrid(grid);
     return grid;
 }
 
