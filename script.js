@@ -1,3 +1,5 @@
+var grid;
+
 function shuffleGrid(grid) {
     var linhas = grid.length;
     var colunas = grid[0].length;
@@ -16,20 +18,20 @@ function shuffleGrid(grid) {
 
 function gerarGrid(linhas, colunas) {
     if (linhas == 3 || colunas == 4){
-        var grid = [
+        grid = [
             [1,1,2,2],
             [3,3,4,4],
             [5,5,6,6]
         ];
     } else if (linhas == 4 || colunas == 4){
-        var grid = [
+        grid = [
             [1,1,2,2],
             [3,3,4,4],
             [5,5,6,6],
             [7,7,8,8]
         ];
     } else {
-        var grid = [
+        grid = [
             [1,1,2,2,3],
             [3,4,4,5,5],
             [6,6,7,7,8],
@@ -43,31 +45,31 @@ function gerarGrid(linhas, colunas) {
 function gerarTabuleiro(qtdeCartas){
     document.write("<table>");
     if (qtdeCartas == 12) {
-        var gridFacil = gerarGrid(3, 4);
+        grid = gerarGrid(3, 4);
         for (i = 0; i < 3; i ++){
             document.write("<tr>");
             for (j = 0; j < 4; j ++){
-                document.write("<td>Oi</td>");
+                document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
             }
             document.write("</tr>");
         }
     }
     if (qtdeCartas == 16) {
-        var gridMedia = gerarGrid(4, 4);
+        grid = gerarGrid(4, 4);
         for (i = 0; i < 4; i ++){
             document.write("<tr>");
             for (j = 0; j < 4; j ++){
-                document.write("<td><img src='images/backcard1.jpg' style='width:75px; height:100px;'></td>");
+                document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
             }
             document.write("</tr>");
         }
     }
     if (qtdeCartas == 20) {
-        var gridDificil = gerarGrid(4, 5);
+        grid = gerarGrid(4, 5);
         for (i = 0; i < 4; i ++){
             document.write("<tr>");
             for (j = 0; j < 5; j ++){
-                document.write("<td>Oi</td>");
+                document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
             }
             document.write("</tr>");
         }
@@ -90,5 +92,49 @@ function iniciarJogo(){
         } else {
             gerarTabuleiro(qtdeCartas);
         }
+    }
+}
+
+function getImage(file){
+    switch(file){
+        case 0:
+            return "images/card10.jpg";
+            break;
+        case 1:
+            return "images/card1.jpg";
+            break;
+        case 2:
+            return "images/card2.jpg";
+            break;
+        case 3:
+            return "images/card3.jpg";
+            break;
+        case 4:
+            return "images/card4.jpg";
+            break;
+        case 5:
+            return "images/card5.jpg";
+            break;
+        case 6:
+            return "images/card6.jpg";
+            break;
+        case 7:
+            return "images/card7.jpg";
+            break;
+        case 8:
+            return "images/card8.jpg";
+            break;
+        case 9:
+            return "images/card9.jpg";
+            break;
+    }
+}
+
+function revelarCarta(linha, coluna){
+    image = document.getElementById(`file${linha}${coluna}`);
+    file = grid[linha][coluna];
+    image.src = getImage(file);
+    if(file == 1){
+        document.write("boa");
     }
 }
