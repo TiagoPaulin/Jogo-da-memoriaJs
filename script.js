@@ -130,11 +130,28 @@ function getImage(file){
     }
 }
 
-function revelarCarta(linha, coluna){
-    image = document.getElementById(`file${linha}${coluna}`);
-    file = grid[linha][coluna];
+var verifica_carta = 10;
+var imagem1;
+
+function revelarCarta(linha, coluna) {
+    var image = document.getElementById(`file${linha}${coluna}`);
+    var file = grid[linha][coluna];
     image.src = getImage(file);
-    if(file == 1){
-        document.write("boa");
+    if (verifica_carta == 10) {
+        verifica_carta = file;
+        imagem1 = image;
+    } else {
+        if (verifica_carta == file) {
+        document.write("Voce encontrou um parde cartas");
+        }  else {
+            setTimeout(function() {
+                imagem1.src = "images/backcard1.jpg";
+                image.src = "images/backcard1.jpg";
+            }, 1000); // Tempo em milissegundos 
+        }
+        verifica_carta = 10;
     }
 }
+
+
+
