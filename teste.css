@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'OldLondom';
+    src: url('font/OldLondon.ttf') format('truetype'); /* Substitua o caminho pelo caminho correto para o arquivo de fonte */
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: OldLondom, sans-serif;
+}
+.invisible{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+}
+body{
+    background-color:  rgb(18, 18, 18);
+}
