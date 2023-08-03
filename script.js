@@ -1,4 +1,4 @@
-var grid; // criacao da variavel global da grid'
+var grid; // criacao da variavel global da grid
 
 function gerarGrid(linhas, colunas) {
     var valores = []; // cria o array com os valores que vao corresponder a linha da matriz
@@ -25,13 +25,13 @@ function gerarGrid(linhas, colunas) {
     return grid;
 }
 
-function gerarTabuleiro(qtdeCartas){
+function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro 
     document.write("<table>");
     if (qtdeCartas == 12) {
-        grid = gerarGrid(3, 4);
-        for (i = 0; i < 3; i ++){
+        grid = gerarGrid(4, 3);
+        for (i = 0; i < 4; i ++){
             document.write("<tr>");
-            for (j = 0; j < 4; j ++){
+            for (j = 0; j < 3; j ++){
                 document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
             }
             document.write("</tr>");
@@ -73,6 +73,7 @@ function iniciarJogo(){
         if (qtdeCartas == ""){
             alert("Voce deve selecionar uma dificuldade")
         } else {
+            document.write(`<h1>Bem-vindo ${username}!</h1>`)
             gerarTabuleiro(qtdeCartas);
         }
     }
@@ -130,7 +131,7 @@ function revelarCarta(linha, coluna) {
             setTimeout(function() {
                 imagem1.src = "images/backcard1.jpg";
                 image.src = "images/backcard1.jpg";
-            }, 1000); // Tempo em milissegundos 
+            }, 1000);
         }
         verifica_carta = 10;
     }
