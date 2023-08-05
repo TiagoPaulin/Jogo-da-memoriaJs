@@ -1,5 +1,7 @@
 var grid; // criacao da variavel global da grid
 
+
+
 function gerarGrid(linhas, colunas) {
     var valores = []; // cria o array com os valores que vao corresponder a linha da matriz
     for (var i = 0; i <= 9; i++) {
@@ -26,15 +28,27 @@ function gerarGrid(linhas, colunas) {
 }
 
 function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro 
-    document.write("<table>");
+    var tabuleiro = document.getElementById("tabuleiro");
+    // document.write("<table>");
     if (qtdeCartas == 12) {
         grid = gerarGrid(4, 3);
         for (i = 0; i < 4; i ++){
-            document.write("<tr>");
+            var row = document.createElement("tr")
+            // document.write("<tr>");
             for (j = 0; j < 3; j ++){
-                document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
+                var colum = document.createElement("td");
+                var img = document.createElement("img");
+                img.src = "images/backcard1.jpg";
+                img.style.width = "100px";
+                img.style.height = "150px";
+                img.id = `file${i}${j}`;
+                img.onclick = `revelarCarta(${i},${j})`;
+                colum.appendChild(img);
+                // document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
+                row.appendChild(colum);
             }
-            document.write("</tr>");
+            tabuleiro.appendChild(row);
+            // document.write("</tr>");
         }
     }
     if (qtdeCartas == 16) {
@@ -57,7 +71,7 @@ function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro
             document.write("</tr>");
         }
     }
-    document.write("</table>");
+    // document.write("</table>");
 }
 
 function iniciarJogo(){
@@ -66,14 +80,21 @@ function iniciarJogo(){
     if (username.length == 0) {
         alert("Voce precisa digitar o seu nome!");
     } else {
-        var menu = document.getElementById("menu");
-        menu.setAttribute("class", "invisible");
         var nivel = document.getElementById("nivel");
         qtdeCartas = nivel.value;
         if (qtdeCartas == ""){
             alert("Voce deve selecionar uma dificuldade")
         } else {
-            document.write(`<h1>Bem-vindo ${username}!</h1>`)
+            var menu = document.getElementById("menu");
+            menu.setAttribute("class", "invisible");
+            var table = document.getElementById("table");
+            table.setAttribute("class", "visible");
+            var title = document.createElement("h1");
+            title.textContent = `Bem-vindo ${username}!`;
+            table.appendChild(title);
+            // var tabuleiro = document.createElement("table");
+            // tabuleiro.textContent = gerarTabuleiro(qtdeCartas);
+            // table.appendChild(tabuleiro)
             gerarTabuleiro(qtdeCartas);
         }
     }
