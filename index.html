@@ -11,11 +11,12 @@
 </head>
 <body>
     <div id="table" class="invisible">
-        <h1 id="start-message" class="title"></h1>
-        <table id="tabuleiro"></table>
+        <h1 id="start-message" class="title" align="center"></h1>
+        <table id="tabuleiro" align="center"></table>
+        <p id="message" class="invisible">Você encontrou um par de cartas!</p>
     </div>
     <div id="menu">
-        <h1 id="title" class="title">Jogo da Memoria</h1>
+        <h1 id="title" class="title">Jogo da Memória</h1>
         <form action="" id="form">
             <Label id="label">Insira seu nome:</Label>
             <input type="text" name="username" id="username" placeholder="Nome" class="field">
@@ -23,7 +24,7 @@
                 <option value="" selected disabled>Selecione uma dificuldade</option>
                 <option value="12">12 Cartas</option>
                 <option value="16">16 Cartas</option>
-                <option value="20">20 Cartas</option>
+                <option value="18">18 Cartas</option>
             </select>
             <p></p>
             <button type="button" name="start_button" id="start_button" onclick="iniciarJogo()">Iniciar</button>

@@ -1,7 +1,5 @@
 var grid; // criacao da variavel global da grid
 
-
-
 function gerarGrid(linhas, colunas) {
     var valores = []; // cria o array com os valores que vao corresponder a linha da matriz
     for (var i = 0; i <= 9; i++) {
@@ -29,49 +27,75 @@ function gerarGrid(linhas, colunas) {
 
 function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro 
     var tabuleiro = document.getElementById("tabuleiro");
-    // document.write("<table>");
     if (qtdeCartas == 12) {
-        grid = gerarGrid(4, 3);
-        for (i = 0; i < 4; i ++){
-            var row = document.createElement("tr")
-            // document.write("<tr>");
-            for (j = 0; j < 3; j ++){
+        grid = gerarGrid(3, 4);
+        for (i = 0; i < 3; i ++){
+            var row = document.createElement("tr");
+            for (j = 0; j < 4; j ++){
                 var colum = document.createElement("td");
                 var img = document.createElement("img");
                 img.src = "images/backcard1.jpg";
                 img.style.width = "100px";
                 img.style.height = "150px";
+                img.style.cursor = "pointer";
                 img.id = `file${i}${j}`;
-                img.onclick = `revelarCarta(${i},${j})`;
+                img.onclick = function(i, j) {
+                    return function() {
+                        revelarCarta(i, j);
+                    }
+                }(i, j);
                 colum.appendChild(img);
-                // document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
                 row.appendChild(colum);
             }
             tabuleiro.appendChild(row);
-            // document.write("</tr>");
         }
     }
     if (qtdeCartas == 16) {
         grid = gerarGrid(4, 4);
         for (i = 0; i < 4; i ++){
-            document.write("<tr>");
+            var row = document.createElement("tr");
             for (j = 0; j < 4; j ++){
-                document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
+                var colum = document.createElement("td");
+                var img = document.createElement("img");
+                img.src = "images/backcard1.jpg";
+                img.style.width = "100px";
+                img.style.height = "150px";
+                img.style.cursor = "pointer";
+                img.id = `file${i}${j}`;
+                img.onclick = function(i, j) {
+                    return function() {
+                        revelarCarta(i, j);
+                    }
+                }(i, j);
+                colum.appendChild(img);
+                row.appendChild(colum);
             }
-            document.write("</tr>");
+            tabuleiro.appendChild(row);
         }
     }
-    if (qtdeCartas == 20) {
-        grid = gerarGrid(4, 5);
+    if (qtdeCartas == 18) {
+        grid = gerarGrid(4, 6);
         for (i = 0; i < 4; i ++){
-            document.write("<tr>");
-            for (j = 0; j < 5; j ++){
-                document.write(`<td><img src='images/backcard1.jpg' style='width:100px; height:150px;' id='file${i}${j}' onclick='revelarCarta(${i},${j})'></td>`);
+            var row = document.createElement("tr");
+            for (j = 0; j < 6; j ++){
+                var colum = document.createElement("td");
+                var img = document.createElement("img");
+                img.src = "images/backcard1.jpg";
+                img.style.width = "100px";
+                img.style.height = "150px";
+                img.style.cursor = "pointer";
+                img.id = `file${i}${j}`;
+                img.onclick = function(i, j) {
+                    return function() {
+                        revelarCarta(i, j);
+                    }
+                }(i, j);
+                colum.appendChild(img);
+                row.appendChild(colum);
             }
-            document.write("</tr>");
+            tabuleiro.appendChild(row);
         }
     }
-    // document.write("</table>");
 }
 
 function iniciarJogo(){
@@ -89,12 +113,8 @@ function iniciarJogo(){
             menu.setAttribute("class", "invisible");
             var table = document.getElementById("table");
             table.setAttribute("class", "visible");
-            var title = document.createElement("h1");
+            var title = document.getElementById("start-message");
             title.textContent = `Bem-vindo ${username}!`;
-            table.appendChild(title);
-            // var tabuleiro = document.createElement("table");
-            // tabuleiro.textContent = gerarTabuleiro(qtdeCartas);
-            // table.appendChild(tabuleiro)
             gerarTabuleiro(qtdeCartas);
         }
     }
@@ -147,7 +167,11 @@ function revelarCarta(linha, coluna) {
         imagem1 = image;
     } else {
         if (verifica_carta == file) {
-        document.write("Voce encontrou um parde cartas");
+        var message = documet.getElementById("message");
+        message.setAttribute("class", "visible");
+        setTimeout(function(){
+            message.setAttribute("class", "invisible");
+        }, 1000);
         }  else {
             setTimeout(function() {
                 imagem1.src = "images/backcard1.jpg";
