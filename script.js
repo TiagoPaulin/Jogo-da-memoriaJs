@@ -161,7 +161,8 @@ var imagem1;
 function revelarCarta(linha, coluna) {
     var image = document.getElementById(`file${linha}${coluna}`);
     var file = grid[linha][coluna];
-    var message = document.createElement("p");
+    var message_field = document.getElementById("message_field");
+    var message = document.createElement("b");
     message.textContent = "Você encontrou um par de cartas!";
     message.style.color = "white";
     image.src = getImage(file);
@@ -173,7 +174,7 @@ function revelarCarta(linha, coluna) {
             image.onclick = function(){};
             imagem1.onclick = function(){};
             message.class = "visible";
-            table.appendChild(message);
+            message_field.appendChild(message);
             setTimeout(function(){
                 message.remove();
             }, 1000)
