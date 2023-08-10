@@ -161,6 +161,9 @@ var imagem1;
 function revelarCarta(linha, coluna) {
     var image = document.getElementById(`file${linha}${coluna}`);
     var file = grid[linha][coluna];
+    var message = document.createElement("p");
+    message.textContent = "Você encontrou um par de cartas!";
+    message.style.color = "white";
     image.src = getImage(file);
     if (verifica_carta == 10) {
         verifica_carta = file;
@@ -169,6 +172,11 @@ function revelarCarta(linha, coluna) {
         if (verifica_carta == file) {
             image.onclick = function(){};
             imagem1.onclick = function(){};
+            message.class = "visible";
+            table.appendChild(message);
+            setTimeout(function(){
+                message.remove();
+            }, 1000)
         } else {
             setTimeout(function() {
                 imagem1.src = "images/backcard1.jpg";
