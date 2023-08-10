@@ -165,14 +165,11 @@ function revelarCarta(linha, coluna) {
     if (verifica_carta == 10) {
         verifica_carta = file;
         imagem1 = image;
-    } else {
+    } else  {
         if (verifica_carta == file) {
-        var message = documet.getElementById("message");
-        message.setAttribute("class", "visible");
-        setTimeout(function(){
-            message.setAttribute("class", "invisible");
-        }, 1000);
-        }  else {
+            image.onclick = function(){};
+            imagem1.onclick = function(){};
+        } else {
             setTimeout(function() {
                 imagem1.src = "images/backcard1.jpg";
                 image.src = "images/backcard1.jpg";
