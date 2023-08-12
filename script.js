@@ -2,7 +2,7 @@ var grid; // criacao da variavel global da grid
 
 function gerarGrid(linhas, colunas){
     grid = []; // inicializa a grid
-    let id = [0,1,2,3,4,5,6,7,8,9]; // array com todos os ids possiveis das cartas
+    let id = [0,1,2,3,4,5,6,7,8,9,10,11]; // array com todos os ids possiveis das cartas
     for(i = 0; i < linhas; i ++){
         let values = []; // inicializa as linhas da grid
         for(j = 0; j < (colunas / 2); j ++){
@@ -64,7 +64,7 @@ function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro
             tabuleiro.appendChild(row);
         }
     }
-    if (qtdeCartas == 18) {
+    if (qtdeCartas == 24) {
         grid = gerarGrid(4, 6);
         console.log(grid);
         for (i = 0; i < 4; i ++){
@@ -144,6 +144,12 @@ function getImage(file){
         case 9:
             return "images/card9.jpg";
             break;
+        case 10:
+            return "images/card11.jpg";
+            break;
+        case 11:
+            return "images/card12.jpg";
+            break;
     }
 }
 
@@ -180,5 +186,6 @@ function revelarCarta(linha, coluna) {
     }
 }
 
+console.log(grid);
 
 
