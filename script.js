@@ -1,28 +1,19 @@
 var grid; // criacao da variavel global da grid
 
-function gerarGrid(linhas, colunas) {
-    var valores = []; // cria o array com os valores que vao corresponder a linha da matriz
-    for (var i = 0; i <= 9; i++) {
-        for (var j = 0; j < 2; j++) {
-            valores.push(i); // popula o array com valores de 0 a 9 que se repetem 2 vezes
+function gerarGrid(linhas, colunas){
+    grid = []; // inicializa a grid
+    let id = [0,1,2,3,4,5,6,7,8,9]; // array com todos os ids possiveis das cartas
+    for(i = 0; i < linhas; i ++){
+        let values = []; // inicializa as linhas da grid
+        for(j = 0; j < (colunas / 2); j ++){
+            let indice = Math.floor(Math.random() * id.length); // gera um indice aleatorio referente aos ids das cartas
+                let value = id[indice]; // armazena o id em uma variavel
+                id.splice(indice, 1) // como o id ja foi utilizado, ele e removido do array de ids para evitar repeticoes 
+                values.push(value, value); // adiciona o valor sorteado duas vezes seguidas na linha
         }
+        grid[i] = values; // armazena na grid a linha ja populada
     }
-    for (var i = valores.length - 1; i > 0; i--) { // percorre o array de tras pra frente
-        var j = Math.floor(Math.random() * (i + 1));
-        var aux = valores[i]; // troca os valores da posicao i com os da posicao j usando uma variavel auxiliar para embaralhar os valores
-        valores[i] = valores[j];
-        valores[j] = aux;
-    }
-    grid = []; // grid
-    var count = 0;
-    for (var i = 0; i < linhas; i++) {
-        grid[i] = [];
-        for (var j = 0; j < colunas; j++) {
-            grid[i][j] = valores[count]; // adiciona os valores embaralhados acima na grid
-            count++;
-        }
-    }
-    return grid;
+    return grid; // retorna a grid
 }
 
 function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro 
@@ -75,6 +66,7 @@ function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro
     }
     if (qtdeCartas == 18) {
         grid = gerarGrid(4, 6);
+        console.log(grid);
         for (i = 0; i < 4; i ++){
             var row = document.createElement("tr");
             for (j = 0; j < 6; j ++){
