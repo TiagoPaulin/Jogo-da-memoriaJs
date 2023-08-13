@@ -1,5 +1,22 @@
 var grid; // criacao da variavel global da grid
 
+function shuffle(grid) {
+    const linhas = grid.length;
+    const colunas = grid[0].length;
+
+    for (let i = 0; i < 1000; i++) {
+        const i1 = Math.floor(Math.random() * linhas);
+        const j1 = Math.floor(Math.random() * colunas);
+        const i2 = Math.floor(Math.random() * linhas);
+        const j2 = Math.floor(Math.random() * colunas);
+        const aux = grid[i1][j1];
+        grid[i1][j1] = grid[i2][j2];
+        grid[i2][j2] = aux;
+    }
+    
+    return grid;
+}
+
 function gerarGrid(linhas, colunas){
     grid = []; // inicializa a grid
     let id = [0,1,2,3,4,5,6,7,8,9,10,11]; // array com todos os ids possiveis das cartas
@@ -13,7 +30,8 @@ function gerarGrid(linhas, colunas){
         }
         grid[i] = values; // armazena na grid a linha ja populada
     }
-    return grid; // retorna a grid
+    let gridshuffle = shuffle(grid);
+    return gridshuffle; // retorna a grid
 }
 
 function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro 
