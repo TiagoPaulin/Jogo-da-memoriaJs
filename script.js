@@ -1,6 +1,7 @@
 var grid; // criacao da variavel global da grid
 
-function shuffle(grid) {
+// funcao responsavel por embaralhar a grid
+function shuffle(grid) { 
     const linhas = grid.length;
     const colunas = grid[0].length;
 
@@ -171,7 +172,7 @@ function getImage(file){
     }
 }
 
-var verifica_carta = 10;
+var verifica_carta = null;
 var imagem1;
 
 function revelarCarta(linha, coluna) {
@@ -182,7 +183,7 @@ function revelarCarta(linha, coluna) {
     message.textContent = "Você encontrou um par de cartas!";
     message.style.color = "white";
     image.src = getImage(file);
-    if (verifica_carta == 10) {
+    if (verifica_carta == null) {
         verifica_carta = file;
         imagem1 = image;
     } else  {
@@ -200,7 +201,7 @@ function revelarCarta(linha, coluna) {
                 image.src = "images/backcard1.jpg";
             }, 1000);
         }
-        verifica_carta = 10;
+        verifica_carta = null;
     }
 }
 
