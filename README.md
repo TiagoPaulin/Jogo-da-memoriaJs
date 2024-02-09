@@ -1,2 +1,2 @@
 # Jogo-da-memoriaJs
-Jogo da memoria feito em javascript (em desenvolvimento)
+Jogo da memoria com HTML CSS e JavaScript
