@@ -1,4 +1,8 @@
 var grid; // criacao da variavel global da grid
+var parada; // criacao da variavel global do criterio de parada
+var contador = 0; // criacao da variavel que conta os pares encontrados
+var username;
+var table;
 
 // funcao responsavel por embaralhar a grid
 function shuffle(grid) { 
@@ -38,6 +42,7 @@ function gerarGrid(linhas, colunas){
 function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro 
     var tabuleiro = document.getElementById("tabuleiro");
     if (qtdeCartas == 12) {
+        parada = 6;
         grid = gerarGrid(3, 4);
         for (i = 0; i < 3; i ++){
             var row = document.createElement("tr");
@@ -61,6 +66,7 @@ function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro
         }
     }
     if (qtdeCartas == 16) {
+        parada = 8;
         grid = gerarGrid(4, 4);
         for (i = 0; i < 4; i ++){
             var row = document.createElement("tr");
@@ -84,6 +90,7 @@ function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro
         }
     }
     if (qtdeCartas == 24) {
+        parada = 12;
         grid = gerarGrid(4, 6);
         console.log(grid);
         for (i = 0; i < 4; i ++){
@@ -111,7 +118,7 @@ function gerarTabuleiro(qtdeCartas){ // funcao que cria o tabuleiro
 
 function iniciarJogo(){
     var nome = document.getElementById("username");
-    var username = nome.value;
+    username = nome.value;
     if (username.length == 0) {
         alert("Voce precisa digitar o seu nome!");
     } else {
@@ -122,7 +129,7 @@ function iniciarJogo(){
         } else {
             var menu = document.getElementById("menu");
             menu.setAttribute("class", "invisible");
-            var table = document.getElementById("table");
+            table = document.getElementById("table");
             table.setAttribute("class", "visible");
             var title = document.getElementById("start-message");
             title.textContent = `Bem-vindo ${username}!`;
@@ -188,6 +195,7 @@ function revelarCarta(linha, coluna) {
         imagem1 = image;
     } else  {
         if (verifica_carta == file) {
+            contador ++;
             image.onclick = function(){};
             imagem1.onclick = function(){};
             message.class = "visible";
@@ -202,6 +210,20 @@ function revelarCarta(linha, coluna) {
             }, 1000);
         }
         verifica_carta = null;
+    }
+    vitoria();
+}
+
+function vitoria(){
+    if(contador === parada) {
+        var menu = document.getElementById("menu-reiniciar");
+        var title = document.getElementById("end-message");
+        var message = document.getElementById("message");
+        title.textContent = "Você venceu o Jogo!";
+        message.textContent = `Parabéns ${username} você encontrou todos os pares de cartas, jogue novamente!`;
+        message.style.color = "white";
+        table.setAttribute("class", "invisible");
+        menu.setAttribute("class", "visible");
     }
 }
 

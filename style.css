@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'OldLondom';
-    src: url('font/OldLondon.ttf') format('truetype'); /* Substitua o caminho pelo caminho correto para o arquivo de fonte */
+    src: url('font/OldLondon.ttf') format('truetype');
 }
 *{
     margin: 0;
@@ -16,7 +16,7 @@
 body{
     background-image: url("images/background6.jpg");
 }
-#menu{
+#menu, #menu-reiniciar{
     background-color: rgba(82, 50, 29, 0.8);
     width: 350px;
     height: 250px;
@@ -37,7 +37,7 @@ body{
     margin-top: 30px;
     color: white;
 }
-#start_button{
+.button{
     background-color: rgb(207, 110, 6);
     width: 250px;
     height: 30px;
@@ -47,7 +47,7 @@ body{
     margin-top: 20px;
     cursor: pointer;
 }
-#start_button:hover{
+.button:hover{
     background-color: rgb(172, 93, 7);
 }
 .field{
@@ -74,5 +74,11 @@ body{
 }
 #start-message{
     padding: 5px;
+}
+#message {
+    margin-top: 50px;
+}
+#reload-button {
+    margin-top: 50px;
 }
 
