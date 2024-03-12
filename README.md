@@ -14,7 +14,7 @@ Apos inserir o nome e selecionar a dificuldade do jogo o jogador pode clicar em 
 ![alt text](imagens_programa/image-1.png)
 
 * Uma vez que o jogo inicia o jogador pode revelar um par de cartas clicando nelas
-- caso as cartas do par escolhido sejam iguais uma mensagem "Voce encontrou um par de cartas!" será exibida na parte de baixo do tabuleiro e a castas se manterão viradas até o fim do jogo
+- caso as cartas do par escolhido sejam iguais, uma mensagem "Voce encontrou um par de cartas!" será exibida na parte de baixo do tabuleiro e a castas se manterão viradas até o fim do jogo
 
 ![alt text](imagens_programa/image-2.png)
 
